@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
-import {Icon, Layout, Menu} from 'antd';
-import {Link} from 'react-router-dom';
-import {headerMenuConfig} from './../../../config/menuConfig';
+import React, { Component } from 'react';
+import { Icon, Layout, Menu } from 'antd';
+import { Link } from 'react-router-dom';
+import { headerMenuConfig } from './../../../config/menuConfig';
 
 export default class BasicHeader extends Component {
     render() {
         const { isMobile } = this.props;
         return (
-            <Layout.Header style={{background: '#fff'}}>
-            {/* Header 菜单项 begin */}
+            <Layout.Header style={{ background: '#fff' }}>
+                {/* Header 菜单项 begin */}
                 {headerMenuConfig && headerMenuConfig.length > 0 ? (
                     <Menu
                         mode="horizontal"
-                        style={{float: "right"}}
+                        style={{ float: "right" }}
                         selectedKeys={[]}
                     >
                         {headerMenuConfig.map((nav, idx) => {
@@ -30,18 +30,18 @@ export default class BasicHeader extends Component {
                                     {linkProps.to ? (
                                         <Link {...linkProps}>
                                             {nav.icon ? (
-                                                <Icon type={nav.icon} size="small"/>
+                                                <Icon type={nav.icon} size="small" />
                                             ) : null}
                                             {!isMobile ? nav.name : null}
                                         </Link>
                                     ) : (
-                                        <a {...linkProps}>
-                                            {nav.icon ? (
-                                                <Icon type={nav.icon} size="small"/>
-                                            ) : null}
-                                            {!isMobile ? nav.name : null}
-                                        </a>
-                                    )}
+                                            <a {...linkProps}>
+                                                {nav.icon ? (
+                                                    <Icon type={nav.icon} size="small" />
+                                                ) : null}
+                                                {!isMobile ? nav.name : null}
+                                            </a>
+                                        )}
                                 </Menu.Item>
                             );
                         })}

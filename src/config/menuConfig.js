@@ -64,7 +64,7 @@ const siderMenuConfig = [
             },
             {
                 name: '添加用户',
-                path: '/user/insert',
+                path: '/user/add',
                 disabled: false,
             },
             {

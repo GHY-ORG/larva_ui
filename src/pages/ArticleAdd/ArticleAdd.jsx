@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import MarkdownEditor from '../../components/MarkdownEditor';
 
 export default class ArticleAdd extends Component {
@@ -11,6 +11,6 @@ export default class ArticleAdd extends Component {
 
     render() {
 
-        return (<div><MarkdownEditor/></div>);
+        return (<div><MarkdownEditor /></div>);
     }
 }

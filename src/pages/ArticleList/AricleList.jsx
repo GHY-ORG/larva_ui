@@ -1,5 +1,5 @@
-import {Button, Icon, Input, Table} from 'antd';
-import React, {Component} from 'react';
+import { Button, Icon, Input, Table } from 'antd';
+import React, { Component } from 'react';
 
 const data = [{
     key: '1',
@@ -36,12 +36,12 @@ export default class ArticleList extends Component {
 
     handleSearch = (selectedKeys, confirm) => () => {
         confirm();
-        this.setState({searchText: selectedKeys[0]});
+        this.setState({ searchText: selectedKeys[0] });
     };
 
     handleReset = clearFilters => () => {
         clearFilters();
-        this.setState({searchText: ''});
+        this.setState({ searchText: '' });
     };
 
     render() {
@@ -49,7 +49,7 @@ export default class ArticleList extends Component {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => (
+            filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
                 <div className="custom-filter-dropdown">
                     <Input
                         ref={ele => this.searchInput = ele}
@@ -62,7 +62,7 @@ export default class ArticleList extends Component {
                     <Button onClick={this.handleReset(clearFilters)}>Reset</Button>
                 </div>
             ),
-            filterIcon: filtered => <Icon type="smile-o" style={{color: filtered ? '#108ee9' : '#aaa'}}/>,
+            filterIcon: filtered => <Icon type="smile-o" style={{ color: filtered ? '#108ee9' : '#aaa' }} />,
             onFilter: (value, record) => record.name.toLowerCase().includes(value.toLowerCase()),
             onFilterDropdownVisibleChange: (visible) => {
                 if (visible) {
@@ -72,14 +72,14 @@ export default class ArticleList extends Component {
                 }
             },
             render: (text) => {
-                const {searchText} = this.state;
+                const { searchText } = this.state;
                 return searchText ? (
                     <span>
-            {text.split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i')).map((fragment, i) => (
-                fragment.toLowerCase() === searchText.toLowerCase()
-                    ? <span key={i} className="highlight">{fragment}</span> : fragment // eslint-disable-line
-            ))}
-          </span>
+                        {text.split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i')).map((fragment, i) => (
+                            fragment.toLowerCase() === searchText.toLowerCase()
+                                ? <span key={i} className="highlight">{fragment}</span> : fragment // eslint-disable-line
+                        ))}
+                    </span>
                 ) : text;
             },
         }, {
@@ -99,6 +99,6 @@ export default class ArticleList extends Component {
             }],
             onFilter: (value, record) => record.address.indexOf(value) === 0,
         }];
-        return <Table columns={columns} dataSource={data}/>;
+        return <Table columns={columns} dataSource={data} />;
     }
 }

@@ -26,6 +26,41 @@ const routerConfig = [
         component: ArticleList,
     },
     {
+        path: '/article/category',
+        layout: BasicLayout,
+        component: Home,
+    },
+    {
+        path: '/article/tag',
+        layout: BasicLayout,
+        component: Home,
+    },
+    {
+        path: '/comment',
+        layout: BasicLayout,
+        component: Home,
+    },
+    {
+        path: '/file',
+        layout: BasicLayout,
+        component: Home,
+    },
+    {
+        path: '/user/add',
+        layout: BasicLayout,
+        component: ArticleAdd,
+    },
+    {
+        path: '/user/list',
+        layout: BasicLayout,
+        component: ArticleList,
+    },
+    {
+        path: '/user/pwd',
+        layout: BasicLayout,
+        component: Home,
+    },
+    {
         path: '/setting/base',
         layout: BasicLayout,
         component: Home,
