@@ -1,14 +1,21 @@
 // 以下文件格式为描述路由的协议格式
 import BasicLayout from '../layouts/BasicLayout';
+import BlankLayout from '../layouts/BlankLayout';
 import Home from '../pages/Home';
 import ArticleAdd from "../pages/ArticleAdd";
 import ArticleList from "../pages/ArticleList";
+import Login from '../pages/Login';
 
 const routerConfig = [
     {
         path: '/',
         layout: BasicLayout,
         component: Home,
+    },
+    {
+        path: '/login',
+        layout: BlankLayout,
+        component: Login,
     },
     {
         path: '/dashboard',
