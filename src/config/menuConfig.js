@@ -2,7 +2,23 @@
 // headerMenuConfig：头部导航配置
 // asideMenuConfig：侧边导航配置
 
-const headerMenuConfig = [];
+const headerMenuConfig = [
+    {
+        name: '首页',
+        path: '/',
+        icon: 'home',
+    },
+    {
+        name: '反馈',
+        path: '/help',
+        icon: 'mail',
+    },
+    {
+        name: '帮助',
+        path: '/help',
+        icon: 'question-circle',
+    },
+];
 
 const siderMenuConfig = [
     {

@@ -11,13 +11,15 @@ export default class BasicLayout extends Component {
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <BasicSider path={pathname} />
-                <Layout>
-                    <BasicHeader />
-                    <Layout.Content style={{ padding: '0 50px' }}>
-                        <BasicBreadcrumb path={pathname} />
-                        {this.props.children}
-                    </Layout.Content>
-                </Layout>
+                <Layout.Content>
+                    <Layout>
+                        <BasicHeader />
+                        <Layout.Content style={{ padding: '0 50px',}}>
+                            <BasicBreadcrumb path={pathname} />
+                            {this.props.children}
+                        </Layout.Content>
+                    </Layout>
+                </Layout.Content>
                 <BackTop />
             </Layout>
         );

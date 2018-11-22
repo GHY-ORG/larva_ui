@@ -25,73 +25,74 @@ export default class BasicSider extends Component {
     };
     render() {
         const { path } = this.props;
-        return (<Layout.Sider
-            collapsible
-            collapsed={this.state.collapsed}
-            onCollapse={this.onCollapse}
-        >
-            <Logo />
-            <Menu
-                selectedKeys={[path]}
-                defaultSelectedKeys={[path]}
-                defaultOpenKeys={[`${this.getOpenKeys(path)}`]}
-                theme="dark"
-                mode="inline"
+        return (
+            <Layout.Sider
+                collapsible
+                collapsed={this.state.collapsed}
+                onCollapse={this.onCollapse}
             >
-                {siderMenuConfig && siderMenuConfig.length > 0 && siderMenuConfig.map((nav, index) => {
-                    if (nav.children && nav.children.length > 0) {
+                <Logo />
+                <Menu
+                    selectedKeys={[path]}
+                    defaultSelectedKeys={[path]}
+                    defaultOpenKeys={[`${this.getOpenKeys(path)}`]}
+                    theme="dark"
+                    mode="inline"
+                >
+                    {siderMenuConfig && siderMenuConfig.length > 0 && siderMenuConfig.map((nav, index) => {
+                        if (nav.children && nav.children.length > 0) {
+                            return (
+                                <Menu.SubMenu
+                                    key={index}
+                                    title={<span>{nav.icon ? (<Icon size="small" type={nav.icon} />) : null}
+                                        <span>{nav.name}</span></span>}
+                                >
+                                    {nav.children.map((item) => {
+                                        const linkProps = {};
+                                        if (item.newWindow) {
+                                            linkProps.href = item.path;
+                                            linkProps.target = '_blank';
+                                        } else if (item.external) {
+                                            linkProps.href = item.path;
+                                        } else {
+                                            linkProps.to = item.path;
+                                        }
+                                        return (
+                                            <Menu.Item key={item.path}>
+                                                <Link {...linkProps}>{item.name}</Link>
+                                            </Menu.Item>
+                                        );
+                                    })}
+                                </Menu.SubMenu>
+                            );
+                        }
+                        const linkProps = {};
+                        if (nav.newWindow) {
+                            linkProps.href = nav.path;
+                            linkProps.target = '_blank';
+                        } else if (nav.external) {
+                            linkProps.href = nav.path;
+                        } else {
+                            linkProps.to = nav.path;
+                        }
                         return (
-                            <Menu.SubMenu
-                                key={index}
-                                title={<span>{nav.icon ? (<Icon size="small" type={nav.icon} />) : null}
-                                    <span>{nav.name}</span></span>}
-                            >
-                                {nav.children.map((item) => {
-                                    const linkProps = {};
-                                    if (item.newWindow) {
-                                        linkProps.href = item.path;
-                                        linkProps.target = '_blank';
-                                    } else if (item.external) {
-                                        linkProps.href = item.path;
-                                    } else {
-                                        linkProps.to = item.path;
-                                    }
-                                    return (
-                                        <Menu.Item key={item.path}>
-                                            <Link {...linkProps}>{item.name}</Link>
-                                        </Menu.Item>
-                                    );
-                                })}
-                            </Menu.SubMenu>
-                        );
-                    }
-                    const linkProps = {};
-                    if (nav.newWindow) {
-                        linkProps.href = nav.path;
-                        linkProps.target = '_blank';
-                    } else if (nav.external) {
-                        linkProps.href = nav.path;
-                    } else {
-                        linkProps.to = nav.path;
-                    }
-                    return (
-                        <Menu.Item key={nav.path}>
-                            <Link {...linkProps}>
-                                <span>
-                                    {nav.icon ? (
-                                        <Icon size="small" type={nav.icon} />
-                                    ) : null}
+                            <Menu.Item key={nav.path}>
+                                <Link {...linkProps}>
                                     <span>
-                                        {nav.name}
+                                        {nav.icon ? (
+                                            <Icon size="small" type={nav.icon} />
+                                        ) : null}
+                                        <span>
+                                            {nav.name}
+                                        </span>
                                     </span>
-                                </span>
-                            </Link>
-                        </Menu.Item>
-                    );
-                })}
-            </Menu>
-            {/* 侧边菜单项 end */}
-        </Layout.Sider>
+                                </Link>
+                            </Menu.Item>
+                        );
+                    })}
+                </Menu>
+                {/* 侧边菜单项 end */}
+            </Layout.Sider>
         );
     }
 }

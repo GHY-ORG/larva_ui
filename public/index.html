@@ -2,32 +2,47 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <base href="%PUBLIC_URL%/"> -->
+    <!-- Chrome、Firefox OS 和 Opera 的主题颜色 -->
+    <meta name="theme-color" content="#feb512">
+    <!-- 针对页面的简短描述（限制 150 字符）-->
+    <!-- 此内容*可能*被用作搜索引擎结果的一部分。 -->
+    <meta name="description" content="一个页面描述">
+    <!-- 控制搜索引擎的抓取和索引行为 -->
+    <meta name="robots" content="index,follow">
+    <!-- 验证网址所有权 -->
+    <meta name="google-site-verification" content="verification_token">
+    <!-- 关于你的网站主题的简短描述 -->
+    <meta name="subject" content="你的网站主题">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-  <title>Larva - The Admin of GHY.CN</title>
+    <!-- 禁用自动检测和格式化可能的电话号码 -->
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- 链接到关于页面所有者的信息 -->
+    <link rel="author" href="%PUBLIC_URL%/humans.txt">
+    <!-- 指向一个适用于链接内容的版权申明 -->
+    <link rel="license" href="%PUBLIC_URL%/copyright.html">
+    <!-- 提供了关于作者或其他人的信息 -->
+    <link rel="me" href="http://xn--i0v668g.com/" type="text/html">
+    <link rel="me" href="mailto:meetziyang@gmail.com">
+
+    <!-- 我们目前需要提供的最大的网站图标尺寸 -->
+    <link rel="icon" sizes="192x192" href="%PUBLIC_URL%/favicon.ico">
+    <!-- Apple 触摸图标 (尺寸同样是 192x192) -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png">
+    <!-- Safari 固定选项卡图标 -->
+    <link rel="mask-icon" href="%PUBLIC_URL%/favicon.ico" color="#feb512">
+
+    <!-- 添加到主屏幕 -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Larva - Admin of GHY.CN</title>
 </head>
 
 <body>
-  <noscript>
-    You need to enable JavaScript to run this app.
-  </noscript>
-  <div id="root"></div>
+    <div id="root"></div>
 </body>
 
 </html>

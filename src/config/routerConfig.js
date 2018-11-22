@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import ArticleAdd from "../pages/ArticleAdd";
 import ArticleList from "../pages/ArticleList";
 import Login from '../pages/Login';
+import DashBoard from '../pages/DashBoard';
 
 const routerConfig = [
     {
@@ -20,7 +21,7 @@ const routerConfig = [
     {
         path: '/dashboard',
         layout: BasicLayout,
-        component: Home,
+        component: DashBoard,
     },
     {
         path: '/article/add',
