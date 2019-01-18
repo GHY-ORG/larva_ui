@@ -41,7 +41,7 @@ class LoginForm extends Component {
                         valuePropName: 'checked',
                         initialValue: false,
                     })(
-                        <Checkbox>记作账号</Checkbox>
+                        <Checkbox>记住账号</Checkbox>
                     )}
                     <Button type="primary" htmlType="submit" block>登录</Button>
                 </Form.Item>

@@ -1,83 +1,58 @@
 // 以下文件格式为描述路由的协议格式
-import BasicLayout from '../layouts/BasicLayout';
-import BlankLayout from '../layouts/BlankLayout';
-import Home from '../pages/Home';
-import ArticleAdd from "../pages/ArticleAdd";
-import ArticleList from "../pages/ArticleList";
-import Login from '../pages/Login';
-import DashBoard from '../pages/DashBoard';
+import BasicLayout from '../layouts/BasicLayout'
+import Home from '../pages/Home'
+import DashBoard from '../pages/DashBoard'
+import PostEdit from "../pages/Post/Edit";
+import Post from '../pages/Post/Index';
 
-const routerConfig = [
-    {
-        path: '/',
-        layout: BasicLayout,
-        component: Home,
-    },
-    {
-        path: '/login',
-        layout: BlankLayout,
-        component: Login,
-    },
-    {
+const routerConfig = [{
         path: '/dashboard',
+        name: '仪表盘',
+        icon: 'dashboard',
         layout: BasicLayout,
-        component: DashBoard,
+        component: DashBoard
     },
     {
-        path: '/article/add',
+        path: '/post',
+        name: '文章',
+        icon: 'book',
         layout: BasicLayout,
-        component: ArticleAdd,
+        component: Post
     },
     {
-        path: '/article/list',
+        path: '/post/edit',
+        name: '编辑',
         layout: BasicLayout,
-        component: ArticleList,
-    },
-    {
-        path: '/article/category',
-        layout: BasicLayout,
-        component: Home,
-    },
-    {
-        path: '/article/tag',
-        layout: BasicLayout,
-        component: Home,
+        component: PostEdit
     },
     {
         path: '/comment',
+        name: '评论',
+        icon: 'heart',
         layout: BasicLayout,
-        component: Home,
+        component: Home
     },
     {
         path: '/file',
+        name: '文件',
+        icon: 'file',
         layout: BasicLayout,
-        component: Home,
+        component: Home
     },
     {
-        path: '/user/add',
+        path: '/user',
+        name: '用户',
+        icon: 'user',
         layout: BasicLayout,
-        component: ArticleAdd,
+        component: Home
     },
     {
-        path: '/user/list',
+        path: '/setting',
+        name: '设置',
+        icon: 'setting',
         layout: BasicLayout,
-        component: ArticleList,
-    },
-    {
-        path: '/user/pwd',
-        layout: BasicLayout,
-        component: Home,
-    },
-    {
-        path: '/setting/base',
-        layout: BasicLayout,
-        component: Home,
-    },
-    {
-        path: '/setting/comment',
-        layout: BasicLayout,
-        component: Home,
-    },
+        component: Home
+    }
 ];
 
 export default routerConfig;

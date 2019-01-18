@@ -1,47 +1,41 @@
 import React, { Component } from 'react';
 import { Breadcrumb, Icon } from 'antd';
 import { Link } from 'react-router-dom';
-import { siderMenuConfig } from './../../../config/menuConfig';
+import routerConfig from '../../../config/routerConfig';
 
 export default class BasicBreadcrumb extends Component {
     render() {
-        const { path } = this.props;
-        const pathSnippets = path.split('/').filter(i => i);
-        const breadcrumbItems = pathSnippets.map((_, index) => {
-            const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
-            let breadcrumb = null;
-            siderMenuConfig.forEach(function (item) {
-                if (item.path === url) {
-                    breadcrumb = item;
+        let { path } = this.props;
+        path = path.split('/').filter(i => i);
+        const breadcrumbItems = path.map((_, index) => {
+            const url = `/${path.slice(0, index + 1).join('/')}`;
+            let item = null;
+            for (let i = 0; i < routerConfig.length; i++) {
+                if (url === routerConfig[i].path) {
+                    item = routerConfig[i];
+                    break;
                 }
-
-                if (item.children) {
-                    item.children.forEach(function (item) {
-                        if (item.path === url) {
-                            breadcrumb = item;
-                        }
-                    })
-                }
-            });
-            if (breadcrumb) {
-                return (
-                    <Breadcrumb.Item key={url}>
-                        {breadcrumb.disabled ?
-                            <span><Icon type={breadcrumb.icon} />{breadcrumb.name}</span> :
-                            <Link to={url}><span><Icon type={breadcrumb.icon} />{breadcrumb.name}</span></Link>
-                        }
-                    </Breadcrumb.Item>
-                );
             }
-            else {
-                return (null);
-            }
+            return (
+                <Breadcrumb.Item key={url}>
+                    <Link to={url} disabled={item.disabled}>
+                        {item.icon ? (
+                            <Icon size="small" type={item.icon} style={{ marginRight: "5px" }} />
+                        ) : null}
+                        <span>{item.name}</span>
+                    </Link>
+                </Breadcrumb.Item>
+            );
         });
         if (breadcrumbItems) {
-            return (<Breadcrumb separator=">" style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>);
-        }
-        else {
-            return (null);
+            return (
+                <Breadcrumb
+                    separator=">"
+                    style={{ margin: '16px 0' }}
+                >
+                    {breadcrumbItems}
+                </Breadcrumb>
+            );
         }
     }
 }

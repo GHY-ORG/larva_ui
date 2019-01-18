@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BackTop, Layout } from 'antd';
 import BasicHeader from './components/BasicHeader'
-import BasicSider from './components/BasicSider'
 import BasicBreadcrumb from './components/BasicBreadcrumb'
 
 export default class BasicLayout extends Component {
@@ -9,17 +8,15 @@ export default class BasicLayout extends Component {
         const { location } = this.props;
         const { pathname } = location;
         return (
-            <Layout style={{ minHeight: '100vh' }}>
-                <BasicSider path={pathname} />
-                <Layout.Content>
-                    <Layout>
-                        <BasicHeader />
-                        <Layout.Content style={{ padding: '0 50px',}}>
-                            <BasicBreadcrumb path={pathname} />
-                            {this.props.children}
-                        </Layout.Content>
-                    </Layout>
+            <Layout>
+                <BasicHeader path={pathname} />
+                <Layout.Content style={{ padding: '0 28px' }}>
+                    <BasicBreadcrumb path={pathname} />
+                    {this.props.children}
                 </Layout.Content>
+                <Layout.Footer style={{ textAlign: 'center' }}>
+                    Ant Design ©2018 Created by Ant UED
+                </Layout.Footer>
                 <BackTop />
             </Layout>
         );

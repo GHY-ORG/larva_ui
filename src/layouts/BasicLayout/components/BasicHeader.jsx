@@ -1,35 +1,48 @@
 import React, { Component } from 'react';
 import { Icon, Layout, Menu } from 'antd';
-import { headerMenuConfig } from './../../../config/menuConfig';
+import { Link } from 'react-router-dom';
+import routerConfig from '../../../config/routerConfig';
+
+const headers = ['/dashboard', '/post', '/comment', '/file'];
 
 export default class BasicHeader extends Component {
+
     render() {
-        const { isMobile } = this.props;
+        const { path } = this.props;
+        const isMobile = false;
         return (
-            <Layout.Header style={{ background: '#fff', height: 45 }}>
-                {headerMenuConfig && headerMenuConfig.length > 0 ? (
-                    <Menu
-                        mode="horizontal"
-                        style={{ float: "right" }}
-                    >
-                        {headerMenuConfig.map((nav, idx) => {
-                            const linkProps = {};
-                            if (nav.newWindow) {
-                                linkProps.href = nav.path;
-                                linkProps.target = '_blank';
-                            } else if (nav.external) {
-                                linkProps.href = nav.path;
-                            } else {
-                                linkProps.to = nav.path;
+            <Layout.Header>
+                <Menu
+                    selectedKeys={[path]}
+                    theme="dark"
+                    mode="horizontal"
+                    style={{ lineHeight: '64px' }}
+                >
+                    {headers.map((url) => {
+                        let item = null;
+                        for (let i = 0; i < routerConfig.length; i++) {
+                            if (url === routerConfig[i].path) {
+                                item = routerConfig[i];
+                                break;
                             }
-                            return (
-                                <Menu.Item key={idx} >
-                                    {<a {...linkProps}>{nav.icon ? (<Icon type={nav.icon} size="small" />) : null}{!isMobile ? nav.name : null}</a>}
-                                </Menu.Item>
-                            );
-                        })}
-                    </Menu>
-                ) : null}
+                        }
+                        return (
+                            <Menu.Item
+                                key={item.path}
+                                disabled={item.disabled}
+                            >
+                                <Link to={item.path}>
+                                    <span>
+                                        {item.icon ? (
+                                            <Icon size="small" type={item.icon} />
+                                        ) : null}
+                                        {!isMobile ? item.name : null}
+                                    </span>
+                                </Link>
+                            </Menu.Item>
+                        );
+                    })}
+                </Menu>
             </Layout.Header>
         );
     }
